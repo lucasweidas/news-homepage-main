@@ -1,0 +1,15 @@
+@use '../abstracts/' as *;
+
+.header {
+  --header-padding-top: #{rem(28)};
+  position: relative;
+  padding-block: var(--header-padding-top) rem(32);
+
+  @include breakpoint(medium) {
+    padding-block: rem(50) rem(40);
+  }
+
+  @include breakpoint(large) {
+    padding-block: rem(88) rem(54);
+  }
+}

@@ -1,0 +1,34 @@
+@use '../abstracts/' as *;
+
+.popular {
+  display: grid;
+  justify-items: center;
+  grid-area: popular;
+
+  &__image {
+    width: min(100%, rem(500));
+
+    @include breakpoint(medium) {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    --content-margin-top: #{rem(24)};
+    display: grid;
+    row-gap: rem(20);
+    margin-block-start: var(--content-margin-top);
+
+    @include breakpoint(medium) {
+      --content-margin-top: #{rem(36)};
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: rem(32);
+    }
+  }
+
+  &__wrapper {
+    .button--read-more {
+      margin-block-start: var(--content-margin-top);
+    }
+  }
+}

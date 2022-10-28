@@ -1,0 +1,67 @@
+@use '../abstracts/' as *;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-size-3: #{rem(15)};
+  --font-size-4: #{rem(18)};
+  --font-size-6: #{rem(32)};
+  --font-size-headline-1: #{rem(42)};
+  --font-size-headline-2: #{rem(32)};
+  --font-size-headline-3: #{rem(20)};
+  --font-size-headline-2-sm: #{rem(18)};
+
+  @include breakpoint(medium) {
+    --font-size-4: #{rem(16)};
+    --font-size-headline-1: #{rem(56)};
+    --font-size-headline-2: #{rem(38)};
+  }
+}
+
+body {
+  font-family: var(--font-inter);
+  font-size: var(--font-size-3);
+}
+
+.headline-1 {
+  font-size: var(--font-size-headline-1);
+  font-weight: 800;
+  color: var(--color-very-dark-blue);
+}
+
+.headline-2 {
+  font-size: var(--font-size-headline-2);
+  font-weight: 700;
+  color: var(--color-soft-orange);
+
+  &--sm {
+    width: fit-content;
+    font-size: var(--font-size-headline-2-sm);
+    font-weight: 800;
+    color: var(--color-very-dark-blue);
+  }
+}
+
+.headline-3 {
+  width: fit-content;
+  font-size: var(--font-size-headline-3);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.text {
+  font-weight: 400;
+  line-height: 1.6;
+
+  &--dark,
+  &--grayish {
+    @extend .text;
+  }
+
+  &--dark {
+    color: var(--color-grayish-blue-6);
+  }
+
+  &--grayish {
+    color: var(--color-grayish-blue-3);
+  }
+}

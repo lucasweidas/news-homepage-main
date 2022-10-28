@@ -1,0 +1,36 @@
+@use '../abstracts/' as *;
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--guide,
+  &--read-more {
+    @extend .button;
+  }
+
+  &--guide {
+    background-color: transparent;
+
+    * {
+      pointer-events: none;
+    }
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+  }
+
+  &--read-more {
+    width: min(100%, rem(186));
+    height: rem(48);
+    background-color: var(--color-soft-red);
+    font-size: var(--font-size-3);
+    font-weight: 700;
+    color: var(--color-off-white);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    @include on-hover-focus(background-color, var(--color-very-dark-blue));
+  }
+}

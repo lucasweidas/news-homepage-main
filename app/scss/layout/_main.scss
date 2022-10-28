@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+.main {
+  &__container {
+    display: grid;
+    grid-template-areas: 'popular' 'new' 'trending';
+    row-gap: rem(64);
+    padding-block-end: rem(80);
+
+    @include breakpoint(medium) {
+      grid-template-areas: 'popular popular' 'trending new';
+      grid-auto-columns: 1fr;
+      gap: rem(72) rem(30);
+    }
+
+    @include breakpoint(large) {
+      grid-template-areas: 'popular new' 'trending trending';
+      grid-template-columns: 2fr 1fr;
+    }
+
+    @include breakpoint(xlarge) {
+      grid-template-columns: auto rem(350);
+    }
+  }
+}

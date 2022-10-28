@@ -1,0 +1,29 @@
+@use '../abstracts/' as *;
+
+.new {
+  grid-area: new;
+  background-color: var(--color-very-dark-blue);
+  padding: rem(28) rem(22);
+
+  @include breakpoint(medium) {
+    padding: rem(34) rem(24);
+  }
+
+  &__cards {
+    display: grid;
+    row-gap: rem(34);
+    margin-block-start: rem(38);
+  }
+
+  .card {
+    .headline-3 {
+      margin-block-end: rem(12);
+      @include on-hover-focus(color, var(--color-soft-orange));
+    }
+
+    &:not(:first-of-type) {
+      padding-block-start: rem(34);
+      border-block-start: rem(1) solid var(--color-grayish-blue-6);
+    }
+  }
+}

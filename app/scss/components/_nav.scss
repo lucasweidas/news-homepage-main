@@ -1,0 +1,92 @@
+@use '../abstracts/' as *;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    width: rem(45);
+
+    @include breakpoint(medium) {
+      width: rem(65);
+    }
+  }
+
+  &__overlay {
+    --overlay-animation-cfg: var(--duration-2) ease-in-out forwards;
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      background-color: hsl(240, 100%, 5%, 0.5);
+    }
+
+    .nav.active & {
+      @include animation(show-overlay, var(--overlay-animation-cfg), 100%) {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &.closing {
+      @include animation(closing-overlay, var(--overlay-animation-cfg), 0%) {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__guide {
+    @include breakpoint-down(medium) {
+      display: flex;
+      width: min(68%, rem(300));
+      height: 100%;
+      flex-direction: column;
+      row-gap: rem(90);
+      float: right;
+      background-color: var(--color-white);
+      padding: var(--header-padding-top) rem(24);
+      transform: translateX(100%);
+    }
+
+    .nav.active & {
+      @include animation(show-guide, var(--overlay-animation-cfg), 100%) {
+        transform: translateX(0%);
+      }
+    }
+
+    .nav__overlay.closing & {
+      @include animation(close-guide, var(--overlay-animation-cfg), 0%) {
+        transform: translateX(0%);
+      }
+    }
+
+    .button--guide {
+      align-self: flex-end;
+    }
+
+    .list {
+      display: flex;
+      gap: rem(20) rem(38);
+
+      @include breakpoint-down(medium) {
+        flex-direction: column;
+      }
+
+      &__link {
+        font-size: var(--font-size-4);
+        @include on-hover-focus(color, var(--color-soft-red));
+
+        @include breakpoint-down(medium) {
+          color: var(--color-very-dark-blue);
+        }
+      }
+    }
+  }
+}

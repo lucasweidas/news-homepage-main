@@ -1,0 +1,22 @@
+@use '../abstracts/' as *;
+
+:root {
+  --container-padding-inline: clamp(#{rem(16)}, 3.5vw, #{rem(24)});
+  --duration-1: 150ms;
+  --duration-2: 200ms;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-off-white);
+}
+
+.container {
+  width: min(100% - var(--container-padding-inline) * 2, rem(1110));
+  margin-inline: auto;
+}
+
+.link {
+  color: inherit;
+}
